@@ -1292,5 +1292,38 @@ message.channel.send(image)
      }
     });	
 
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "تقديم")) {
+    await message.channel.send("**:writing_hand: ارسل اسمك وعمرك ومن اين انت  الآن **").then(e => {
+    let filter = m => m.author.id === message.author.id
+    let lan = '';
+    let md = '';
+    let br = '';
+    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+    .then(collected => {
+      lan = collected.first().content
+      collected.first().delete()
+e.edit(`**:اكتب مدة خبرتك**`)
+let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(co => {
+  md = co.first().content
+        co.first().delete()
+        e.edit(`**لماذا تريد ان تصبح مود في سيرفر؟**`)
+let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(col => {
+  br = col.first().content
+        col.first().delete()
+e.edit("**جاري التقديم علي طلبك...**").then(b => {
+        setTimeout(() => {
+  b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
+        },2000);
+var gg = message.guild.channels.find('name', 'التقديمات')
+if(!gg) return;
+if(gg) {
+gg.send({embed : new Discord.RichEmbed()
+.setDescription(`**اسم وعمر وبلد المقدم : \n ${lan}\n خبرة المقدم :\n ${md} \n سبب التقديم :\n ${br}  **`)  
+          .setFooter(`M Games`)
+.setTimestamp()
+});
 
 client.login(process.env.BOT_TOKEN);
