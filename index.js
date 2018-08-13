@@ -9,18 +9,6 @@ const fetchVideoInfo = require('youtube-info');
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
 const prefix = '!';
 
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '477598898215452682').setName("●");
-client.channels.find('id', '477598898215452682').setName("T");
-client.channels.find('id', '477598898215452682').setName("Tr");
-client.channels.find('id', '477598898215452682').setName("Tre");
-client.channels.find('id', '477598898215452682').setName("TreM");
-client.channels.find('id', '477598898215452682').setName("TreMc");
-client.channels.find('id', '477598898215452682').setName("● TreMc ●");
-  }, 3000);
-});
-
 client.on('guildMemberRemove', (u) => {
     u.guild.fetchAuditLogs().then( s => {
         var ss = s.entries.first();
